@@ -37,6 +37,11 @@ internals.logglyResult = {
     pid       : 1234
 };
 
+internals.optionalFields = {
+    name: 'loggly-name',
+    hostname: 'example.com'
+};
+
 
 // Test shortcuts
 var lab = exports.lab = Lab.script();
@@ -79,6 +84,15 @@ describe('GoodLoggly', function () {
             var result = reporter._report('log', internals.logEventData);
 
             expect(result).to.deep.equal(internals.logglyResult);
+            done();
+        });
+
+        it('should pass through optional "name" and "hostname" fields', function (done) {
+            var logEventData = hoek.applyToDefaults(internals.logEventData, internals.optionalFields);
+            var reporter = new GoodLoggly({ test: '*' }, internals.logglyOptions);
+            var result = reporter._report('log', logEventData);
+
+            expect(result).to.include(internals.optionalFields);
             done();
         });
     });
