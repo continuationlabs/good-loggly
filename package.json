@@ -11,8 +11,7 @@
     "good-reporter": "3.x.x",
     "hoek": "2.x.x",
     "json-stringify-safe": "5.0.x",
-    "loggly": "^1.0.7",
-    "strftime": "^0.8.2"
+    "loggly": "^1.0.7"
   },
   "devDependencies": {
     "code": "^1.2.1",

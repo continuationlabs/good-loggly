@@ -30,7 +30,7 @@ internals.logEventData = {
 
 internals.logglyResult = {
     event     : 'log',
-    timestamp : '2014-03-30T21:28:55.000Z',
+    timestamp : new Date(1396207735000).toISOString(),
     tags      : ['info', 'server'],
     data      : 'Log message',
     msg       : 'Log message',
@@ -65,7 +65,7 @@ describe('GoodLoggly', function () {
             var time = new Date(1396207735000);
             var result = GoodLoggly.timeString(time);
 
-            expect(result).to.equal('2014-03-30T21:28:55.000Z');
+            expect(result).to.equal(time.toISOString());
             done();
         });
     });
