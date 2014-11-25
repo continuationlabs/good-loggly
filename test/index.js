@@ -60,6 +60,35 @@ describe('GoodLoggly', function () {
         done();
     });
 
+
+    it('should throw an error for ops events', function (done) {
+        expect(function () {
+            var reporter = new GoodLoggly({ ops: '*' });
+        }).to.throw('"ops" events are not supported by Loggly');
+        done();
+    });
+
+    it('should initialize if no events are defined', function (done) {
+        expect(function () {
+            var reporter = new GoodLoggly(undefined, internals.logglyOptions);
+        }).not.to.throw();
+        done();
+    });
+
+    it('should throw an error if no Loggly API token is defined', function (done) {
+        expect(function () {
+            var reporter = new GoodLoggly({}, { subdomain: 'SUBDOMAIN' });
+        }).to.throw('Loggly API token required');
+        done();
+    });
+
+    it('should throw an error if no Loggly subdomain is defined', function (done) {
+        expect(function () {
+            var reporter = new GoodLoggly({}, { token: 'TOKEN' });
+        }).to.throw('Loggly subdomain required');
+        done();
+    });
+
     describe('_timeString()', function () {
         it('should formats the time as ISO 8601 date', function (done) {
             var time = new Date(1396207735000);
@@ -70,15 +99,23 @@ describe('GoodLoggly', function () {
         });
     });
 
-    describe('_report()', function () {
+    describe('_getMessage()', function () {
+        it('should return an empty string, if no data is present', function (done) {
+            var result = GoodLoggly.getMessage({});
 
-        it('should throw an error for ops events', function (done) {
-            expect(function () {
-                var reporter = new GoodLoggly({ ops: '*' }, internals.logglyOptions);
-            }).to.throw('"ops" events are not supported by Loggly');
+            expect(result).to.equal('');
             done();
         });
 
+        it('should return the contents of the data property', function (done) {
+            var result = GoodLoggly.getMessage({ data: 'data' });
+
+            expect(result).to.equal('data');
+            done();
+        });
+    });
+
+    describe('_report()', function () {
         it('should log an event', function (done) {
             var reporter = new GoodLoggly({ test: '*' }, internals.logglyOptions);
             var result = reporter._report('log', internals.logEventData);
