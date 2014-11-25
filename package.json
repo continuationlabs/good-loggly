@@ -1,0 +1,31 @@
+{
+  "name": "good-loggly",
+  "version": "0.1.0",
+  "repository": "git://github.com/fhemberger/good-loggly",
+  "description": "Loggly broadcasting for Good process monitor",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test-cov"
+  },
+  "dependencies": {
+    "good-reporter": "3.x.x",
+    "hoek": "2.x.x",
+    "json-stringify-safe": "5.0.x",
+    "loggly": "^1.0.7",
+    "strftime": "^0.8.2"
+  },
+  "devDependencies": {
+    "code": "^1.2.1",
+    "lab": "5.x.x",
+    "proxyquire": "^1.1.0"
+  },
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/fhemberger/good-loggly/raw/master/LICENSE"
+    }
+  ]
+}
