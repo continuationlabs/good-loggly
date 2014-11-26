@@ -1,6 +1,6 @@
 {
   "name": "good-loggly",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": "git://github.com/fhemberger/good-loggly",
   "description": "Loggly broadcasting for Good process monitor",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "dependencies": {
     "good-reporter": "3.x.x",
     "hoek": "2.x.x",
-    "json-stringify-safe": "5.0.x",
     "loggly": "^1.0.7"
   },
   "devDependencies": {
