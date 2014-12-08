@@ -26,6 +26,7 @@ var options = {
                 // Optional
                 name      : 'myapp',
                 hostname  : 'myapp.example.com'
+                tags      : ['global', 'tags', 'for', 'all', 'requests']
             }
         ]
     }]

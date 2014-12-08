@@ -60,11 +60,21 @@ describe('GoodLoggly', function () {
         done();
     });
 
-
     it('should throw an error for ops events', function (done) {
         expect(function () {
             var reporter = new GoodLoggly({ ops: '*' });
         }).to.throw('"ops" events are not supported by Loggly');
+        done();
+    });
+
+    it('should throw an error if tags are not an array', function (done) {
+        var options = hoek.applyToDefaults(internals.logglyOptions, { tags: 'invalid' });
+
+        expect(function () {
+            var reporter = new GoodLoggly({}, options);
+        }).to.throw('Tags must be specified as array');
+
+
         done();
     });
 
@@ -100,17 +110,31 @@ describe('GoodLoggly', function () {
     });
 
     describe('_getMessage()', function () {
+        it('should return the contents of the message property', function (done) {
+            var result = GoodLoggly.getMessage({ data: { message: 'message' }});
+
+            expect(result).to.equal('message');
+            done();
+        });
+
+        it('should fallback to the contents of the error property', function (done) {
+            var result = GoodLoggly.getMessage({ data: { error: 'error' }});
+
+            expect(result).to.equal('error');
+            done();
+        });
+
+        it('should then fallback to the contents of the data property', function (done) {
+            var result = GoodLoggly.getMessage({ data: 'data' });
+
+            expect(result).to.equal('data');
+            done();
+        });
+
         it('should return an empty string, if no data is present', function (done) {
             var result = GoodLoggly.getMessage({});
 
             expect(result).to.equal('');
-            done();
-        });
-
-        it('should return the contents of the data property', function (done) {
-            var result = GoodLoggly.getMessage({ data: 'data' });
-
-            expect(result).to.equal('data');
             done();
         });
     });
