@@ -67,17 +67,6 @@ describe('GoodLoggly', function () {
         done();
     });
 
-    it('should throw an error if tags are not an array', function (done) {
-        var options = hoek.applyToDefaults(internals.logglyOptions, { tags: 'invalid' });
-
-        expect(function () {
-            var reporter = new GoodLoggly({}, options);
-        }).to.throw('Tags must be specified as array');
-
-
-        done();
-    });
-
     it('should initialize if no events are defined', function (done) {
         expect(function () {
             var reporter = new GoodLoggly(undefined, internals.logglyOptions);
