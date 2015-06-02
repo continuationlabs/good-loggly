@@ -8,14 +8,18 @@
     "test": "make test-cov"
   },
   "dependencies": {
-    "good-reporter": "3.x.x",
+    "good-squeeze": "2.1.x",
     "hoek": "2.x.x",
-    "loggly": "^1.0.7"
+    "loggly": "1.0.x"
+  },
+  "peerDependencies": {
+    "good": ">= 6.x.x"
   },
   "devDependencies": {
-    "code": "^1.2.1",
+    "code": "1.x.x",
     "lab": "5.x.x",
-    "proxyquire": "^1.1.0"
+    "lodash.merge": "3.3.x",
+    "proxyquire": "1.1.x"
   },
   "engines": {
     "node": ">=0.10.x"
