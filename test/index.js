@@ -1,3 +1,5 @@
+'use strict';
+
 // Load modules
 
 var Stream       = require('stream');
@@ -8,17 +10,18 @@ var Code         = require('code');
 var Merge        = require('lodash.merge');
 
 var logglyStub = {
-    createClient: function() {}
+    createClient: function () {}
 };
 var GoodLoggly = Proxyquire('..', { 'loggly': logglyStub });
 
 
 // Declare internals
+
 var internals = {};
 
 internals.logglyOptions = {
-    token: "TOKEN",
-    subdomain: "SUBDOMAIN",
+    token     : 'TOKEN',
+    subdomain : 'SUBDOMAIN'
 };
 
 internals.logEventData = {
@@ -43,7 +46,7 @@ internals.optionalFields = {
     hostname: 'example.com'
 };
 
-internals.readStream = function (done) {
+internals.readStream = function () {
 
     var result = new Stream.Readable({ objectMode: true });
     result._read = Hoek.ignore;
@@ -55,8 +58,6 @@ internals.readStream = function (done) {
 var lab = exports.lab = Lab.script();
 var describe = lab.describe;
 var it = lab.it;
-var before = lab.before;
-var after = lab.after;
 var expect = Code.expect;
 
 
@@ -75,7 +76,7 @@ describe('GoodLoggly', function () {
         options.tags = ['foo'];
         var reporter = GoodLoggly(null, options);
         expect(reporter._client).to.exist();
-        expect(reporter._client.tags).to.deep.equal(['foo'])
+        expect(reporter._client.tags).to.deep.equal(['foo']);
         done();
     });
 
@@ -117,7 +118,7 @@ describe('GoodLoggly', function () {
         var stream = internals.readStream();
         var reporter = new GoodLoggly({ log: '*' }, internals.logglyOptions);
 
-        logglyStub.Loggly.prototype.log = function(event, tags) {
+        logglyStub.Loggly.prototype.log = function (event, tags) {
 
             expect(event).to.deep.equal(internals.logglyResult);
             expect(tags).to.deep.equal([ 'info', 'server' ]);
@@ -136,7 +137,7 @@ describe('GoodLoggly', function () {
         var stream = internals.readStream();
         var reporter = new GoodLoggly({ log: '*' }, Merge({}, internals.logglyOptions, internals.optionalFields));
 
-        logglyStub.Loggly.prototype.log = function(event, tags) {
+        logglyStub.Loggly.prototype.log = function (event, tags) {
 
             expect(event).to.deep.equal(Merge({}, internals.logglyResult, internals.optionalFields));
             expect(tags).to.deep.equal([ 'info', 'server' ]);
