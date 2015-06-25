@@ -1,6 +1,6 @@
 {
   "name": "good-loggly",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Loggly broadcasting for Good process monitor",
   "repository": "git://github.com/fhemberger/good-loggly",
   "main": "index.js",
