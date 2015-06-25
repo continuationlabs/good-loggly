@@ -24,13 +24,13 @@ internals.logglyOptions = {
     subdomain : 'SUBDOMAIN'
 };
 
-internals.logEventData = {
+internals.logEventData = Object.freeze({
     event     : 'log',
     timestamp : 1396207735000,
     tags      : ['info', 'server'],
     data      : 'Log message',
     pid       : 1234
-};
+});
 
 internals.logglyResult = {
     event     : 'log',
