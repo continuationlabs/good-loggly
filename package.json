@@ -3,9 +3,10 @@
   "version": "1.0.1",
   "description": "Loggly broadcasting for Good process monitor",
   "repository": "git://github.com/fhemberger/good-loggly",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "make test-cov"
+    "test": "lab -a code -t 90 -L",
+    "test-cov-html": "lab -a code -L -r html -o coverage.html"
   },
   "dependencies": {
     "good-squeeze": "2.1.x",
@@ -24,10 +25,5 @@
   "engines": {
     "node": ">=0.10.x"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/fhemberger/good-loggly/raw/master/LICENSE"
-    }
-  ]
+  "licenses": "BSD-3-Clause"
 }
