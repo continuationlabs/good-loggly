@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Loggly broadcasting for Good process monitor",
   "repository": "git://github.com/fhemberger/good-loggly",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "lab -a code -t 90 -L",
     "test-cov-html": "lab -a code -L -r html -o coverage.html"
