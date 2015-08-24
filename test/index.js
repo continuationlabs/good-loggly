@@ -84,7 +84,9 @@ describe('GoodLoggly', function () {
 
         expect(function () {
 
+            /* eslint-disable no-unused-vars */
             var reporter = new GoodLoggly({ ops: '*' });
+            /* eslint-enable no-unused-vars */
         }).to.throw('"ops" events are not supported by Loggly');
         done();
     });
@@ -100,7 +102,9 @@ describe('GoodLoggly', function () {
 
         expect(function () {
 
+            /* eslint-disable no-unused-vars */
             var reporter = new GoodLoggly(null, { subdomain: 'SUBDOMAIN' });
+            /* eslint-enable no-unused-vars */
         }).to.throw('Loggly API token required');
         done();
     });
@@ -109,7 +113,9 @@ describe('GoodLoggly', function () {
 
         expect(function () {
 
+            /* eslint-disable no-unused-vars */
             var reporter = new GoodLoggly(null, { token: 'TOKEN' });
+            /* eslint-enable no-unused-vars */
         }).to.throw('Loggly subdomain required');
         done();
     });
