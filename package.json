@@ -24,10 +24,5 @@
   "engines": {
     "node": ">=0.10.x"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/fhemberger/good-loggly/raw/master/LICENSE"
-    }
-  ]
+  "license": "MIT"
 }
