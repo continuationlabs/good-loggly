@@ -83,6 +83,7 @@ describe('GoodLoggly', function () {
     it('should throw an error for ops events', function (done) {
 
         expect(function () {
+
             var reporter = new GoodLoggly({ ops: '*' });
         }).to.throw('"ops" events are not supported by Loggly');
         done();
