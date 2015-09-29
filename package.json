@@ -9,18 +9,18 @@
     "test-cov-html": "lab -a code -L -r html -o coverage.html"
   },
   "dependencies": {
-    "good-squeeze": "2.1.x",
-    "hoek": "2.x.x",
-    "loggly": "1.0.x"
+    "good-squeeze": "2.1.0",
+    "hoek": "2.16.3",
+    "loggly": "1.0.8"
   },
   "peerDependencies": {
     "good": ">= 6.x.x"
   },
   "devDependencies": {
-    "code": "1.x.x",
-    "lab": "^5.17.0",
-    "lodash.merge": "3.3.x",
-    "proxyquire": "^1.7.x"
+    "code": "1.5.0",
+    "lab": "5.18.1",
+    "lodash.merge": "3.3.2",
+    "proxyquire": "1.7.2"
   },
   "engines": {
     "node": ">=0.10.x"
