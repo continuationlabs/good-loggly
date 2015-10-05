@@ -20,7 +20,7 @@
     "code": "1.5.0",
     "lab": "^6.1.0",
     "lodash.merge": "3.3.2",
-    "proxyquire": "1.7.2"
+    "proxyquire": "1.7.3"
   },
   "engines": {
     "node": ">=0.10.x"
