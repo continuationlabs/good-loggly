@@ -26,7 +26,7 @@ var options = {
             subdomain : 'YOUR LOGGLY SUBDOMAIN',
             // Optional
             name      : 'myapp',
-            hostname  : 'myapp.example.com'
+            hostname  : 'myapp.example.com',
             tags      : ['global', 'tags', 'for', 'all', 'requests']
         }
     }]
