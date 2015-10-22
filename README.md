@@ -1,56 +1,52 @@
 # good-loggly
 
-Loggly broadcasting for Good process monitor
+[![Current Version](https://img.shields.io/npm/v/good-loggly.svg)](https://www.npmjs.org/package/good-loggly)
+[![Build Status via Travis CI](https://travis-ci.org/continuationlabs/good-loggly.svg?branch=master)](https://travis-ci.org/continuationlabs/good-loggly)
+![Dependencies](http://img.shields.io/david/continuationlabs/good-loggly.svg)
+![devDependencies](http://img.shields.io/david/dev/continuationlabs/good-loggly.svg)
 
----
+Loggly broadcasting for Good.
 
-**This repo is looking for a new maintainer. I haven't been using Loggly for quite a while now, so it's not easy for me to keep things up-to-date. If you want to help and take over development, please get in touch.**
+**Credit:** This module was originally written and maintained by [fhemberger](https://github.com/fhemberger).
 
----
-
-[![Build Status](https://travis-ci.org/fhemberger/good-loggly.svg?branch=master)](http://travis-ci.org/fhemberger/good-loggly)![Current Version](https://img.shields.io/npm/v/good-loggly.svg)
-
-Version 1.x.x require `good@6.x.x`. For older versions of `good`, please use [v0.1.4](https://github.com/fhemberger/good-loggly/releases/tag/v0.1.4) instead. Special thanks to [Adam Bretz](https://github.com/arb) for migrating good-loggly to the latest version of `good`.
-
+Version >=1.x.x requires `good@6.x.x`. For older versions of `good`, please use [v0.1.4](https://github.com/continuationlabs/good-loggly/releases/tag/v0.1.4) instead.
 
 ## Usage
 
 `good-loggly` is a [good](https://github.com/hapijs/good) reporter implementation to write [hapi](http://hapijs.com/) server events to Loggly.
 
 Example integration:
+
 ```javascript
 var Hapi = require('hapi');
-var server = new Hapi.Server();
+var Good = require('good');
+var GoodLoggly = require('good-loggly');
 
+var server = new Hapi.Server();
 var options = {
-    reporters: [{
-        reporter: require('good-loggly'),
-        events: { log: '*', request: '*'},
-        config: {
-            // Required
-            token     : 'YOUR LOGGLY TOKEN',
-            subdomain : 'YOUR LOGGLY SUBDOMAIN',
-            // Optional
-            name      : 'myapp',
-            hostname  : 'myapp.example.com',
-            tags      : ['global', 'tags', 'for', 'all', 'requests']
-        }
-    }]
+  reporters: [
+    {
+      reporter: GoodLoggly,
+      events: { log: '*', request: '*'},
+      config: {
+        // Required
+        token: 'YOUR LOGGLY TOKEN',
+        subdomain: 'YOUR LOGGLY SUBDOMAIN',
+        // Optional
+        name: 'myapp',
+        hostname: 'myapp.example.com',
+        tags: ['global', 'tags', 'for', 'all', 'requests']
+      }
+    }
+  ]
 };
 
 server.register({
-    plugin: require('good'),
-    options: options
+  plugin: Good,
+  options: options
 }, function (err) {
-
-    if (err) {
-        return console.error(err);
-    }
+  if (err) {
+    return console.error(err);
+  }
 });
-
 ```
-
-
-## License
-
-[MIT](LICENSE)
