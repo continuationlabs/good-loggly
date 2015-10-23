@@ -5,6 +5,8 @@
 ![Dependencies](http://img.shields.io/david/continuationlabs/good-loggly.svg)
 ![devDependencies](http://img.shields.io/david/dev/continuationlabs/good-loggly.svg)
 
+[![belly-button-style](https://cdn.rawgit.com/continuationlabs/belly-button/master/badge.svg)](https://github.com/continuationlabs/belly-button)
+
 Loggly broadcasting for Good.
 
 **Credit:** This module was originally written and maintained by [fhemberger](https://github.com/fhemberger).
