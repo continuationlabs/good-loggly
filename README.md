@@ -3,7 +3,6 @@
 [![Current Version](https://img.shields.io/npm/v/good-loggly.svg)](https://www.npmjs.org/package/good-loggly)
 [![Build Status via Travis CI](https://travis-ci.org/continuationlabs/good-loggly.svg?branch=master)](https://travis-ci.org/continuationlabs/good-loggly)
 ![Dependencies](http://img.shields.io/david/continuationlabs/good-loggly.svg)
-![devDependencies](http://img.shields.io/david/dev/continuationlabs/good-loggly.svg)
 
 [![belly-button-style](https://cdn.rawgit.com/continuationlabs/belly-button/master/badge.svg)](https://github.com/continuationlabs/belly-button)
 
