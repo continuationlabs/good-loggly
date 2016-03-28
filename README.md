@@ -43,8 +43,8 @@ var options = {
 };
 
 server.register({
-  plugin: Good,
-  register: options
+  register: Good,
+  options: options
 }, function (err) {
   if (err) {
     return console.error(err);
