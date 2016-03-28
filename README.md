@@ -43,7 +43,7 @@ var options = {
 };
 
 server.register({
-  plugin: Good,
+  register: Good,
   options: options
 }, function (err) {
   if (err) {
