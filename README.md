@@ -10,7 +10,11 @@ Loggly broadcasting for Good.
 
 **Credit:** This module was originally written and maintained by [fhemberger](https://github.com/fhemberger).
 
-Version >=1.x.x requires `good@6.x.x`. For older versions of `good`, please use [v0.1.4](https://github.com/continuationlabs/good-loggly/releases/tag/v0.1.4) instead.
+## Compatibility
+
+- `good@7.x.x` is compatible with version >=3.x.x.
+- `good@6.x.x` is compatible with version 1.x.x and 2.x.x.
+- For older versions of `good`, use [v0.1.4](https://github.com/continuationlabs/good-loggly/releases/tag/v0.1.4).
 
 ## Usage
 
