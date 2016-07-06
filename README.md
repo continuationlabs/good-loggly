@@ -6,9 +6,9 @@
 
 [![belly-button-style](https://cdn.rawgit.com/continuationlabs/belly-button/master/badge.svg)](https://github.com/continuationlabs/belly-button)
 
-Loggly broadcasting for Good.
+Loggly writable stream. 
 
-`good-loggly` is a [good](https://github.com/hapijs/good) reporter implementation to write [hapi](http://hapijs.com/) server events to Loggly.
+`good-loggly` is a writable stream that is used to send events to Loggly. Below is an example of how to use it with the [good](https://github.com/hapijs/good) logger for [hapi](http://hapijs.com/). 
 
 **Credit:** This module was originally written and maintained by [fhemberger](https://github.com/fhemberger).
 
