@@ -214,12 +214,13 @@ describe('GoodLoggly', () => {
       const options = Merge({ threshold: 2, maxDelay: 0 }, logglyOptions, optionalFields);
       const reporter = new GoodLoggly(options);
 
-      Loggly.Loggly.prototype.log = function (event, tags) {
+      Loggly.Loggly.prototype.log = function (event, tags, callback) {
         expect(event).to.be.an.array();
         expect(event).to.have.length(2);
         expect(event[0]).to.equal(Merge({}, bulkResult[0], optionalFields));
         expect(event[1]).to.equal(Merge({}, bulkResult[1], optionalFields));
         expect(tags).to.be.a.function();
+        expect(callback).to.be.undefined();
         done();
       };
 
@@ -233,13 +234,14 @@ describe('GoodLoggly', () => {
       const options = Merge({ threshold: 100, maxDelay: 150 }, logglyOptions, optionalFields);
       const reporter = new GoodLoggly(options);
 
-      Loggly.Loggly.prototype.log = function (event, tags) {
+      Loggly.Loggly.prototype.log = function (event, tags, callback) {
         expect(event).to.be.an.array();
         expect(event).to.have.length(3);
         expect(event[0]).to.equal(Merge({}, bulkResult[0], optionalFields));
         expect(event[1]).to.equal(Merge({}, bulkResult[1], optionalFields));
         expect(event[2]).to.equal(Merge({}, bulkResult[2], optionalFields));
         expect(tags).to.be.a.function();
+        expect(callback).to.be.undefined();
         done();
       };
 
@@ -256,13 +258,15 @@ describe('GoodLoggly', () => {
       const options = Merge({ threshold: 100 }, logglyOptions, optionalFields);
       const reporter = new GoodLoggly(options);
 
-      Loggly.Loggly.prototype.log = function (event, tags) {
+      Loggly.Loggly.prototype.log = function (event, tags, callback) {
         expect(event).to.be.an.array();
         expect(event).to.have.length(3);
         expect(event[0]).to.equal(Merge({}, bulkResult[0], optionalFields));
         expect(event[1]).to.equal(Merge({}, bulkResult[1], optionalFields));
         expect(event[2]).to.equal(Merge({}, bulkResult[2], optionalFields));
         expect(tags).to.be.a.function();
+        expect(callback).to.be.undefined();
+        tags(null);
         done();
       };
 
@@ -278,7 +282,7 @@ describe('GoodLoggly', () => {
       const options = Merge({ threshold: 100 }, logglyOptions, optionalFields);
       const reporter = new GoodLoggly(options);
 
-      Loggly.Loggly.prototype.log = function (event, tags) {
+      Loggly.Loggly.prototype.log = function (event, tags, callback) {
         Code.fail('We should never get here');
       };
 
@@ -292,19 +296,20 @@ describe('GoodLoggly', () => {
       const options = Merge({ threshold: 2 }, logglyOptions, optionalFields);
       const reporter = new GoodLoggly(options);
 
-      Loggly.Loggly.prototype.log = function (event, tags) {
+      Loggly.Loggly.prototype.log = function (event, tags, callback) {
         expect(event).to.be.an.array();
         expect(event).to.have.length(2);
         expect(event[0]).to.equal(Merge({}, bulkResult[0], optionalFields));
         expect(event[1]).to.equal(Merge({}, bulkResult[1], optionalFields));
         expect(tags).to.be.a.function();
+        expect(callback).to.be.undefined();
         tags(null);
       };
 
       stream.pipe(reporter);
       stream.push(bulkLogEventData[0]);
       stream.push(bulkLogEventData[1]);
-      setTimeout(() => {
+      setImmediate(() => {
         stream.push(bulkLogEventData[2]);
         expect(reporter._buffer).to.have.length(1);
         done();
